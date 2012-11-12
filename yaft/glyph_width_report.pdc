@@ -1,0 +1,35 @@
+% glyph width report
+% haru
+% Last update: 12/11/13
+
+## OSC
+
+~~~
+OSC ... ST
+~~~
+
+-	OSC: ESC(0x1B) ](0x5D)
+-	ST: BEL(0x07) or ESC(0x1B) \\(0x5C)
+
+### glyph width report
+
+request glyph width list
+
+~~~
+OSC 8900 ; ? ST
+~~~
+
+answer
+
+~~~
+OSC 8900 ; width ; from ; to ; width ; from ; to ... ST
+~~~
+
+-	width: 0 or 1 or 2
+-	from, to: unicode code point (decimal)
+
+example
+
+~~~
+OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002 ST
+~~~

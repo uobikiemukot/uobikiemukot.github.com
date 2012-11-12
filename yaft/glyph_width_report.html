@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>80x24</title>
+  <link rel="stylesheet" href="http://www.nak.ics.keio.ac.jp/~haru/style/nak.css">
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <h1 class="title">glyph width report</h1>
+    </div>
+    <div id="content">
+<h2 id="osc">OSC</h2>
+<pre><code>OSC ... ST</code></pre>
+<ul>
+<li>OSC: ESC(0x1B) ](0x5D)</li>
+<li>ST: BEL(0x07) or ESC(0x1B) \(0x5C)</li>
+</ul>
+<h3 id="glyph-width-report">glyph width report</h3>
+<p>request glyph width list</p>
+<pre><code>OSC 8900 ; ? ST</code></pre>
+<p>answer</p>
+<pre><code>OSC 8900 ; width ; from ; to ; width ; from ; to ... ST</code></pre>
+<ul>
+<li>width: 0 or 1 or 2</li>
+<li>from, to: unicode code point (decimal)</li>
+</ul>
+<p>example</p>
+<pre><code>OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002 ST</code></pre>
+    </div>
+  </div>
+</body>
+</html>
