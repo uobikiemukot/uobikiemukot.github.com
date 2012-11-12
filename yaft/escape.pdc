@@ -1,0 +1,25 @@
+## yaft escape sequence
+supported escape sequence list
+
+## glyph width report (not supported yet)
+
+request glyph width list
+
+~~~
+OSC 8900 ; ?
+~~~
+
+answer
+
+~~~
+OSC 8900 ; width ; form ; to ; width ; from ; to ...
+~~~
+
+-	width: 0 or 1 or 2
+-	from, to: unicode code point (decimal)
+
+example
+
+~~~
+OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002
+~~~

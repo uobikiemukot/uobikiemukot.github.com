@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>80x24</title>
+  <link rel="stylesheet" href="http://www.nak.ics.keio.ac.jp/~haru/style/nak.css">
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <h1 class="title">80x24</h1>
+    </div>
+    <div id="content">
+<h2 id="yaft-escape-sequence">yaft escape sequence</h2>
+<p>supported escape sequence list</p>
+<h2 id="glyph-width-report-not-supported-yet">glyph width report (not supported yet)</h2>
+<p>request glyph width list</p>
+<pre><code>OSC 8900 ; ?</code></pre>
+<p>answer</p>
+<pre><code>OSC 8900 ; width ; form ; to ; width ; from ; to ...</code></pre>
+<ul>
+<li>width: 0 or 1 or 2</li>
+<li>from, to: unicode code point (decimal)</li>
+</ul>
+<p>example</p>
+<pre><code>OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002</code></pre>
+    </div>
+  </div>
+</body>
+</html>

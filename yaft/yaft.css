@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Georgia, Times, "Times New Roman", serif;
+	font-weight: normal;
+	font-size: 100%;
+	line-height: 1.5em;
+	text-indent: 0;
+}
+
+html {
+}
+
+body {
+	font-size: 12px;
+}
+
+/* common property */
+img {
+}
+
+h1, h2, h3, p, ul, ol, dl, pre, img, table {
+	margin-bottom: 15px;
+}
+
+ul, ol, li, dl, dd {
+	margin-left: 15px;
+}
+
+h1 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h1.title {
+	font-size: 30px;
+}
+
+h2 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+p {
+}
+
+ul, ol, li {
+}
+
+dl, dd {
+}
+
+th {
+	font-weight: bold;
+	background-color: #CCC;
+}
+
+.footnotes {
+	font-size: 8px;
+}
+
+.url {
+}
+
+.caption {
+	color: #AAA;
+}
+
+a, a:visited {
+	color: #88F;
+	text-decoration:none;
+}
+
+address a, address a:visited {
+	color: #AAA;
+}
+
+code {
+}
+
+pre {
+	padding: 5px;
+	color: #DDD;
+	background-color: #444;
+	font-family: Monaco, Courier, monospace;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow: auto;
+}
+
+/* style for each id */
+div#box {
+	margin:0 auto;
+	border: 1px solid #757575;
+	width: 850px;
+}
+
+
+div#header {
+	text-align: center;
+	border-bottom: 1px #666 solid;
+	background-color: #333;
+	color: #666;
+}
+
+#header a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+div#navigation {
+	margin: 0 auto;
+	padding: 5px;
+	width: 70%;
+}
+
+#navigation li {
+	list-style: none;
+}
+
+div#content {
+	margin: 0 auto;
+	padding: 5px;
+	width: 70%;
+}
+
+div#category {
+	color: #AAA;
+}
+
+div#dateline {
+	color: #AAA;
+}
+
+div#footer {
+	text-align: center;
+	color: #FFF;
+	background-color: #666;
+}
