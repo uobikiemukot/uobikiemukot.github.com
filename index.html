@@ -1,1 +1,83 @@
-/home/nak/haru/public_html/yaft/index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>80x24</title>
+  <link rel="stylesheet" href="http://www.nak.ics.keio.ac.jp/~haru/style/nak.css">
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <h1 class="title">80x24</h1>
+    </div>
+    <div id="content">
+<h2 id="yaft">yaft</h2>
+<p>yet another framebuffer terminal</p>
+<figure>
+<img src="http://www.nak.ics.keio.ac.jp/~haru/yaft/img/yaft-screenshot.png" alt="screenshot"><figcaption>screenshot</figcaption>
+</figure>
+<h2 id="recent-changes">recent changes</h2>
+<h3 id="version-0.1.9-2012-10-18">version 0.1.9 (2012-10-18)</h3>
+<ul>
+<li>supported virtual console switching</li>
+<li>removed all optios without <q>YAFT=wall</q></li>
+</ul>
+<h3 id="version-0.2.0-2012-11-09">version 0.2.0 (2012-11-09)</h3>
+<ul>
+<li>suppported BDF</li>
+</ul>
+<pre><code>    $ ./mkfont alias /your/favorite/bdf &gt; glyph.h
+    $ make yaft</code></pre>
+<h2 id="download">download</h2>
+<ul>
+<li><a href="http://www.nak.ics.keio.ac.jp/~haru/yaft/release/yaft-0.2.0.tar.gz">yaft-0.2.0</a></li>
+<li><a href="http://www.nak.ics.keio.ac.jp/~haru/yaft/release/yaft-freebsd-0.1.9.tar.gz">yaft-freebsd-0.1.9</a></li>
+</ul>
+<h2 id="feature">feature</h2>
+<ul>
+<li>recognizes basic escape sequences (most of vt102 and linux console)</li>
+<li>supports various framebuffer types (8/15/16/24/32bpp)</li>
+<li>supports (only) UTF-8 encoding</li>
+<li>supports 256 colors (same as xterm)</li>
+<li>supports wallpaper</li>
+</ul>
+<h2 id="configuration">configuration</h2>
+<p>if you want to change configuration, rewrite conf.h</p>
+<h3 id="path-and-terminal-name">path and terminal name</h3>
+<ul>
+<li>static char *font_path[] = { <q>/path/to/font.yaft</q>, .., NULL, };<br></li>
+<li>static char *glyph_alias = <q>/path/to/alias</q>;<br></li>
+<li>static char *fb_path = <q>/dev/fb0</q>;<br></li>
+<li>static char *shell_cmd = <q>/bin/bash</q>;<br></li>
+<li>static char *term_name = <q>TERM=yaft-256color</q>;</li>
+</ul>
+<h3 id="color">color</h3>
+<p>the value is an index of color_list[] in color.h</p>
+<ul>
+<li>DEFAULT_FG = 7,<br></li>
+<li>DEFAULT_BG = 0,<br></li>
+<li>CURSOR_COLOR = 2,</li>
+</ul>
+<h3 id="misc">misc</h3>
+<ul>
+<li>DEBUG = false,<br></li>
+<li>TABSTOP = 8,</li>
+</ul>
+<h2 id="install">install</h2>
+<pre><code>$ make
+# make install</code></pre>
+<h2 id="usage">usage</h2>
+<pre><code>$ yaft</code></pre>
+<p>for displaying wallpaper, you can use yaft_wall script (it requires <a href="http://www.eclis.ch/fbv/">fbv</a>)</p>
+<pre><code>$ yaft_wall /path/to/wallpaper.jpg</code></pre>
+<h2 id="tools">tools</h2>
+<p>some useful tools (bdf to yaft font converter etc) are found in tools/ directory</p>
+<h2 id="license">license</h2>
+<p>Copyright (c) 2012 haru (uobikiemukot at gmail dot com)</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the <q>Software</q>), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED <q>AS IS</q>, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+    </div>
+  </div>
+</body>
+</html>
