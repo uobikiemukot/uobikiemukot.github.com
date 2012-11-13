@@ -1,0 +1,4 @@
+#!/bin/sh
+pandoc -t html5 --normalize -S -s $1 \
+--css=http://www.nak.ics.keio.ac.jp/~haru/style/nak.css \
+--template=$HOME/public_html/template/template.html

@@ -1,0 +1,1 @@
+/home/nak/haru/yaft/misc/char2yaft.cpp
