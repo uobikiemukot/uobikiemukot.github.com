@@ -1,4 +1,4 @@
-% supported escape sequence by yaft
+% supported escape sequence
 % haru
 % Last update: 12/11/13
 
@@ -63,6 +63,7 @@ ESC c		resets a terminal state (mode, scrolling region, cursor coordinates, curr
 -->
 
 ## OSC
+-	[glyph width report](./glyph_width_report.html) (not supperted yet)
 <!--
 [8900] = glyph_width_report,
 -->
