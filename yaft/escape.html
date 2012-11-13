@@ -8,22 +8,145 @@
 <body>
   <div id="box">
     <div id="header">
-      <h1 class="title">80x24</h1>
+      <h1 class="title">supported escape sequence by yaft</h1>
     </div>
     <div id="content">
-<h2 id="yaft-escape-sequence">yaft escape sequence</h2>
-<p>supported escape sequence list</p>
-<h2 id="glyph-width-report-not-supported-yet">glyph width report (not supported yet)</h2>
-<p>request glyph width list</p>
-<pre><code>OSC 8900 ; ?</code></pre>
-<p>answer</p>
-<pre><code>OSC 8900 ; width ; form ; to ; width ; from ; to ...</code></pre>
-<ul>
-<li>width: 0 or 1 or 2</li>
-<li>from, to: unicode code point (decimal)</li>
-</ul>
-<p>example</p>
-<pre><code>OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002</code></pre>
+<h2 id="control-characters">Control Characters</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">hex</th>
+<th style="text-align: left;">char</th>
+<th style="text-align: left;">function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0x08</td>
+<td style="text-align: left;">BS</td>
+<td style="text-align: left;">backspaces one column</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0x09</td>
+<td style="text-align: left;">HT</td>
+<td style="text-align: left;">goes to the next tab stop or to the end of the line if there is no earlier tab stop</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0x0A</td>
+<td style="text-align: left;">LF</td>
+<td style="text-align: left;">gives a linefeed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0x0B</td>
+<td style="text-align: left;">VT</td>
+<td style="text-align: left;">same as LF</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0x0C</td>
+<td style="text-align: left;">FF</td>
+<td style="text-align: left;">same as LF</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0x0D</td>
+<td style="text-align: left;">CR</td>
+<td style="text-align: left;">gives a carriage return</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0x1B</td>
+<td style="text-align: left;">ESC</td>
+<td style="text-align: left;">starts an escape sequence</td>
+</tr>
+</tbody>
+</table>
+<h2 id="esc">ESC</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sequence</th>
+<th style="text-align: left;">function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ESC 7</td>
+<td style="text-align: left;">saves current state (cursor coordinates, attributes and DECOM)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESC 8</td>
+<td style="text-align: left;">restores state most recently saved by ESC 7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ESC D</td>
+<td style="text-align: left;">gives a linefeed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESC E</td>
+<td style="text-align: left;">gives a newline (CR + LF)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ESC H</td>
+<td style="text-align: left;">sets a tab stop at current column</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESC M</td>
+<td style="text-align: left;">gives a reverse linefeed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ESC Z</td>
+<td style="text-align: left;">DEC private identification (answer: ESC [ ? 6 c <q>I am a VT102</q>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESC [</td>
+<td style="text-align: left;">control sequence introducer (CSI)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ESC ]</td>
+<td style="text-align: left;">operating system command (OSC)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESC c</td>
+<td style="text-align: left;">resets a terminal state (mode, scrolling region, cursor coordinates, current color pair, attributes and tabstop)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="csi">CSI</h2>
+<!--
+['@'] = insert_blank,
+['A'] = curs_up,
+['B'] = curs_down,
+['C'] = curs_forward,
+['D'] = curs_back,
+['E'] = curs_nl,
+['F'] = curs_pl,
+['G'] = curs_col,
+['H'] = curs_pos,
+['J'] = erase_display,
+['K'] = erase_line,
+['L'] = insert_line,
+['M'] = delete_line,
+['P'] = delete_char,
+['X'] = erase_char,
+['a'] = curs_forward,
+['c'] = identify,
+['d'] = curs_line,
+['e'] = curs_down,
+['f'] = curs_pos,
+['g'] = clear_tabstop,
+['h'] = set_mode,
+['l'] = reset_mode,
+['m'] = set_attr,
+['n'] = status_report,
+['r'] = set_margin,
+['s'] = save_state,
+['u'] = restore_state,
+['`'] = curs_col,
+-->
+
+<h2 id="osc">OSC</h2>
+<!--
+[8900] = glyph_width_report,
+-->
+
     </div>
   </div>
 </body>

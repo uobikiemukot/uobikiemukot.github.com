@@ -1,25 +1,68 @@
-## yaft escape sequence
-supported escape sequence list
+% supported escape sequence by yaft
+% haru
+% Last update: 12/11/13
 
-## glyph width report (not supported yet)
+## Control Characters
 
-request glyph width list
+hex		char		function
+-----	-----		---------
+0x08	BS			backspaces one column
+0x09	HT			goes to the next tab stop or to the end of the line if there is no earlier tab stop
+0x0A	LF			gives a linefeed
+0x0B	VT			same as LF
+0x0C	FF			same as LF
+0x0D	CR			gives a carriage return
+0x1B	ESC			starts an escape sequence
 
-~~~
-OSC 8900 ; ?
-~~~
+## ESC
+sequence	function
+---------	---------
+ESC 7		saves current state (cursor coordinates, attributes and DECOM)
+ESC 8		restores state most recently saved by ESC 7
+ESC D		gives a linefeed
+ESC E		gives a newline (CR + LF)
+ESC H		sets a tab stop at current column
+ESC M		gives a reverse linefeed
+ESC Z		DEC private identification (answer: ESC [ ? 6 c "I am a VT102")
+ESC [		control sequence introducer (CSI)
+ESC ]		operating system command (OSC)
+ESC c		resets a terminal state (mode, scrolling region, cursor coordinates, current color pair, attributes and tabstop)
+			
 
-answer
+## CSI
+<!--
+['@'] = insert_blank,
+['A'] = curs_up,
+['B'] = curs_down,
+['C'] = curs_forward,
+['D'] = curs_back,
+['E'] = curs_nl,
+['F'] = curs_pl,
+['G'] = curs_col,
+['H'] = curs_pos,
+['J'] = erase_display,
+['K'] = erase_line,
+['L'] = insert_line,
+['M'] = delete_line,
+['P'] = delete_char,
+['X'] = erase_char,
+['a'] = curs_forward,
+['c'] = identify,
+['d'] = curs_line,
+['e'] = curs_down,
+['f'] = curs_pos,
+['g'] = clear_tabstop,
+['h'] = set_mode,
+['l'] = reset_mode,
+['m'] = set_attr,
+['n'] = status_report,
+['r'] = set_margin,
+['s'] = save_state,
+['u'] = restore_state,
+['`'] = curs_col,
+-->
 
-~~~
-OSC 8900 ; width ; form ; to ; width ; from ; to ...
-~~~
-
--	width: 0 or 1 or 2
--	from, to: unicode code point (decimal)
-
-example
-
-~~~
-OSC 8900 ; 2; 4352; 4441; 2; 4447; 4447; 2; 9001; 9002
-~~~
+## OSC
+<!--
+[8900] = glyph_width_report,
+-->
