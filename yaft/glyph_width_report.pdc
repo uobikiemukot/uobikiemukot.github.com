@@ -13,7 +13,7 @@ OSC 8900 ; Ps ; ? ST
 answer
 
 ~~~
-OSC 8900 ; Ps : Pt ; width : from : to ; width : from : to ; ... ST
+OSC 8900 ; Ps ; Pt ; width : from : to ; width : from : to ; ... ST
 ~~~
 
 -	Ps: reserved (maybe charset)
