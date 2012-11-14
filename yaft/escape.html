@@ -63,91 +63,237 @@
 <thead>
 <tr class="header">
 <th style="text-align: left;">sequence</th>
+<th style="text-align: left;">acronym</th>
 <th style="text-align: left;">function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ESC 7</td>
+<td style="text-align: left;">DECSC</td>
 <td style="text-align: left;">saves current state (cursor coordinates, attributes and DECOM)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ESC 8</td>
+<td style="text-align: left;">DECRC</td>
 <td style="text-align: left;">restores state most recently saved by ESC 7</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ESC D</td>
+<td style="text-align: left;">IND</td>
 <td style="text-align: left;">gives a linefeed</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ESC E</td>
+<td style="text-align: left;">NEL</td>
 <td style="text-align: left;">gives a newline (CR + LF)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ESC H</td>
+<td style="text-align: left;">HTS</td>
 <td style="text-align: left;">sets a tab stop at current column</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ESC M</td>
+<td style="text-align: left;">RI</td>
 <td style="text-align: left;">gives a reverse linefeed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ESC Z</td>
+<td style="text-align: left;">DECID</td>
 <td style="text-align: left;">DEC private identification (answer: ESC [ ? 6 c <q>I am a VT102</q>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ESC [</td>
+<td style="text-align: left;">CSI</td>
 <td style="text-align: left;">control sequence introducer (CSI)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ESC ]</td>
+<td style="text-align: left;">OSC</td>
 <td style="text-align: left;">operating system command (OSC)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ESC c</td>
+<td style="text-align: left;">RIS</td>
 <td style="text-align: left;">resets a terminal state (mode, scrolling region, cursor coordinates, current color pair, attributes and tabstop)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="csi">CSI</h2>
-<!--
-['@'] = insert_blank,
-['A'] = curs_up,
-['B'] = curs_down,
-['C'] = curs_forward,
-['D'] = curs_back,
-['E'] = curs_nl,
-['F'] = curs_pl,
-['G'] = curs_col,
-['H'] = curs_pos,
-['J'] = erase_display,
-['K'] = erase_line,
-['L'] = insert_line,
-['M'] = delete_line,
-['P'] = delete_char,
-['X'] = erase_char,
-['a'] = curs_forward,
-['c'] = identify,
-['d'] = curs_line,
-['e'] = curs_down,
-['f'] = curs_pos,
-['g'] = clear_tabstop,
-['h'] = set_mode,
-['l'] = reset_mode,
-['m'] = set_attr,
-['n'] = status_report,
-['r'] = set_margin,
-['s'] = save_state,
-['u'] = restore_state,
-['`'] = curs_col,
--->
-
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sequence</th>
+<th style="text-align: left;">acronym</th>
+<th style="text-align: left;">function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CSI @</td>
+<td style="text-align: left;">ICH</td>
+<td style="text-align: left;">insert_blank</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI A</td>
+<td style="text-align: left;">CUU</td>
+<td style="text-align: left;">curs_up</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI B</td>
+<td style="text-align: left;">CUD</td>
+<td style="text-align: left;">curs_down</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI C</td>
+<td style="text-align: left;">CUF</td>
+<td style="text-align: left;">curs_forward</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI D</td>
+<td style="text-align: left;">CUB</td>
+<td style="text-align: left;">curs_back</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI E</td>
+<td style="text-align: left;">CNL</td>
+<td style="text-align: left;">curs_nl</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI F</td>
+<td style="text-align: left;">CPL</td>
+<td style="text-align: left;">curs_pl</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI G</td>
+<td style="text-align: left;">CHA</td>
+<td style="text-align: left;">curs_col</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI H</td>
+<td style="text-align: left;">CUP</td>
+<td style="text-align: left;">curs_pos</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI J</td>
+<td style="text-align: left;">ED</td>
+<td style="text-align: left;">erase_display</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI K</td>
+<td style="text-align: left;">EL</td>
+<td style="text-align: left;">erase_line</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI L</td>
+<td style="text-align: left;">IL</td>
+<td style="text-align: left;">insert_line</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI M</td>
+<td style="text-align: left;">DL</td>
+<td style="text-align: left;">delete_line</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI P</td>
+<td style="text-align: left;">DCH</td>
+<td style="text-align: left;">delete_char</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI X</td>
+<td style="text-align: left;">ECH</td>
+<td style="text-align: left;">erase_char</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI a</td>
+<td style="text-align: left;">HPR</td>
+<td style="text-align: left;">curs_forward</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI c</td>
+<td style="text-align: left;">DA</td>
+<td style="text-align: left;">identify</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI d</td>
+<td style="text-align: left;">VPA</td>
+<td style="text-align: left;">curs_line</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI e</td>
+<td style="text-align: left;">VPR</td>
+<td style="text-align: left;">curs_down</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI f</td>
+<td style="text-align: left;">HVP</td>
+<td style="text-align: left;">curs_pos</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI g</td>
+<td style="text-align: left;">TBC</td>
+<td style="text-align: left;">clear_tabstop</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI h</td>
+<td style="text-align: left;">SM</td>
+<td style="text-align: left;">set_mode</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI l</td>
+<td style="text-align: left;">RM</td>
+<td style="text-align: left;">reset_mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI m</td>
+<td style="text-align: left;">SGR</td>
+<td style="text-align: left;">set_attr</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI n</td>
+<td style="text-align: left;">DSR</td>
+<td style="text-align: left;">status_report</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI r</td>
+<td style="text-align: left;">DECSTBM</td>
+<td style="text-align: left;">set_margin</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI s</td>
+<td style="text-align: left;">SCP</td>
+<td style="text-align: left;">save_state</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI u</td>
+<td style="text-align: left;">RCP</td>
+<td style="text-align: left;">restore_state</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI `</td>
+<td style="text-align: left;">HPA</td>
+<td style="text-align: left;">curs_col</td>
+</tr>
+</tbody>
+</table>
 <h2 id="osc">OSC</h2>
-<ul>
-<li><a href="./glyph_width_report.html">glyph width report</a> (not supperted yet) <!--
-[8900] = glyph_width_report,
---></li>
-</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sequence</th>
+<th style="text-align: left;">acronym</th>
+<th style="text-align: left;">function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">OSC 8900…</td>
+<td style="text-align: left;">GWREPT</td>
+<td style="text-align: left;"><a href="./glyph_width_report.html">glyph width report</a> (not supperted yet)</td>
+</tr>
+</tbody>
+</table>
     </div>
   </div>
 </body>
