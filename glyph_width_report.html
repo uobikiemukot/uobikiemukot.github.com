@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>80x24</title>
+  <link rel="stylesheet" href="http://www.nak.ics.keio.ac.jp/~haru/style/nak.css">
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <h1 class="title">glyph width report (GWREPT)</h1>
+    </div>
+    <div id="content">
+<p>request glyph width list</p>
+<pre><code>OSC 8900 ; Ps ; ? ST</code></pre>
+<ul>
+<li>Ps: reserved (maybe charset)</li>
+</ul>
+<p>answer</p>
+<pre><code>OSC 8900 ; Ps : Pt ; width : from : to ; width : from : to ; ... ST</code></pre>
+<ul>
+<li>Ps: reserved (maybe charset)</li>
+<li>Pt: reverved (maybe East Asian Width version)</li>
+<li>width: 0 or 1 or 2</li>
+<li>from, to: unicode code point (decimal)</li>
+</ul>
+<p>example</p>
+<pre><code>OSC 8900;2:4352:4441;2:4447:4447;2:9001:9002;2:11904:11929;2:11931:12019;2:12032:12245;2:12272:12283;2:12288:12329;2:12336:12350;2:12353:12438;2:12443:12543;2:12549:12589;2:12593:12686;2:12688:12727;2:12736:12751;2:12784:12830;2:12832:12867;2:12880:13054;2:13056:19893;2:19904:40891;2:40960:42124;2:42128:42182;2:44032:55203;2:63744:64045;2:64048:64106;2:64112:64217;2:65040:65049;2:65072:65106;2:65108:65126;2:65128:65131;2:65281:65376;2:65504:65510 ST</code></pre>
+    </div>
+  </div>
+</body>
+</html>
