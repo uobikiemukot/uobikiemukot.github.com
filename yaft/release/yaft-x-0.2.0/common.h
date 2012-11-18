@@ -4,9 +4,6 @@
 #include <errno.h>
 /* #include <execinfo.h> for DEBUG */
 #include <fcntl.h>
-#include <linux/fb.h>
-#include <linux/vt.h>
-#include <linux/kd.h>
 #include <signal.h>
 #include <stdbool.h>
 #include <stdint.h>
