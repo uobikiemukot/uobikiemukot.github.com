@@ -4,6 +4,7 @@
 #include <errno.h>
 /* #include <execinfo.h> for DEBUG */
 #include <fcntl.h>
+#include <limits.h>
 #include <signal.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -17,6 +18,13 @@
 #include <unistd.h>
 #include <locale.h>
 #include <wchar.h>
+#include <X11/Xatom.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+//#include <X11/cursorfont.h>
+#include <X11/keysym.h>
+
+#define XK_NO_MOD UINT_MAX
 
 enum char_code {
 	BEL = 0x07, BS = 0x08, HT = 0x09,
@@ -106,6 +114,21 @@ struct framebuffer {
 	int bpp;				/* BYTES per pixel */
 	uint32_t color_palette[COLORS];
 	struct fb_cmap *cmap, *cmap_org;
+};
+
+struct xwindow {
+	Display *dsp;
+	Window win;
+	Pixmap buf;
+	GC gc;
+	struct pair res;
+	int sc;
+};
+
+struct keydef {
+	KeySym k;
+	unsigned int mask;
+	char s[BUFSIZE];
 };
 
 struct cell {

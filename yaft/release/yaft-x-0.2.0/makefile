@@ -4,7 +4,7 @@ CFLAGS += -std=c99 -pedantic -Wall -I/usr/X11R6/include
 LDFLAGS += -lX11 -L/usr/X11R6/lib
 
 HDR = *.h
-DST = yaft
+DST = yaftx
 SRC = x/yaft.c
 DESTDIR =
 PREFIX = $(DESTDIR)/usr
