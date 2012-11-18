@@ -9,13 +9,14 @@ yet another framebuffer terminal
 -	[yaft-freebsd-0.1.9](http://www.nak.ics.keio.ac.jp/~haru/yaft/release/yaft-freebsd-0.1.9.tar.gz)
 
 ## feature
-+	recognizes most of escape sequences of vt102 and linux console ([detail](escape.html))
++	recognizes most of escape sequences of vt102 and linux console ([all sequences](escape.html))
 +	supports various framebuffer types (8/15/16/24/32bpp)
 +	supports (only) UTF-8 encoding
 +	supports 256 colors (same as xterm)
 +	supports wallpaper
 
 ## recent changes
+for more detail, see [ChangeLog](./release/yaft-current/ChangeLog)
 
 ### version 0.1.9 (2012-10-18)
 
