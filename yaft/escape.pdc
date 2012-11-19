@@ -30,39 +30,47 @@ ESC c		RIS			resets a terminal state (mode, scrolling region, cursor coordinates
 			
 
 ## CSI
-sequence	acronym		function
----------	---------	---------
-CSI @		ICH			insert_blank
-CSI A		CUU			curs_up
-CSI B		CUD			curs_down
-CSI C		CUF			curs_forward
-CSI D		CUB			curs_back
-CSI E		CNL			curs_nl
-CSI F		CPL			curs_pl
-CSI G		CHA			curs_col
-CSI H		CUP			curs_pos
-CSI J		ED			erase_display
-CSI K		EL			erase_line
-CSI L		IL			insert_line
-CSI M		DL			delete_line
-CSI P		DCH			delete_char
-CSI X		ECH			erase_char
-CSI a		HPR			curs_forward
-CSI c		DA			identify
-CSI d		VPA			curs_line
-CSI e		VPR			curs_down
-CSI f		HVP			curs_pos
-CSI g		TBC			clear_tabstop
-CSI h		SM			set_mode
-CSI l		RM			reset_mode
-CSI m		SGR			set_attr
-CSI n		DSR			status_report
-CSI r		DECSTBM		set_margin
-CSI s		SCP			save_state
-CSI u		RCP			restore_state
-CSI `		HPA			curs_col
+sequence		acronym		function
+---------		---------	---------
+CSI Pn @		ICH			inserts Pn blank characters
+CSI Pn A		CUU			moves cursor up Pn lines
+CSI Pn B		CUD			moves cursor down Pn lines
+CSI Pn C		CUF			moves cursor right Pn columns
+CSI Pn D		CUB			moves cursor left Pn columns
+CSI Pn E		CNL			moves cursor down Pn lines in column 1
+CSI Pn F		CPL			moves cursor up Pn lines in column 1
+CSI Pn G		CHA			moves cursor to Pn column in current line
+CSI Pl ; Pc H	CUP			moves cursor to Pl line, Pc column (origin at 1, 1)
+CSI Pn J		ED			erases display
+							CSI 0 J: from cursor to end of screen
+							CSI 1 J: from beginning of screen to cursor
+							CSI 2 J: complete display
+CSI Pn K		EL			erases line
+							CSI 0 K: from cursor to end of line
+							CSI 1 K: from beginning of line to cursor
+							CSI 2 K: complete line
+CSI Pn L		IL			inserts Pn lines
+CSI Pn M		DL			deletes Pn lines
+CSI Pn P		DCH			deletes Pn characters
+CSI Pn X		ECH			erase Pn characters
+CSI Pn a		HPR			same as CUF
+CSI c			DA			device attributes
+CSI Pn d		VPA			moves cursor Pn line in current column
+CSI Pn e		VPR			same as CUD
+CSI Pl ; Pc f	HVP			moves cursor to (Pl, Pc)
+CSI g			TBC			clears a horizontal tab stop
+							CSI 0 g: clears a horizontal tab stop at cursor position
+							CSI 3 g: clears all horizontal tab stops
+CSI Ps h		SM			sets one or more modes specified by selective parameters
+CSI Ps l		RM			resets one or more modes specified by selective parameters
+CSI Ps m		SGR			select graphic rendition
+CSI Ps n		DSR			device status report
+CSI Pt ; Pb r	DECSTBM		selects top and bottom margins
+CSI s			SCP			same as DECSC
+CSI u			RCP			same as DECRC
+CSI `			HPA			same as CHA
 
 ## OSC
 sequence	acronym		function
 ---------	---------	---------
-OSC 8900...	GWREPT		[glyph width report](./glyph_width_report.html) (not supperted yet)
+OSC 8900	GWREPT		[glyph width report](./glyph_width_report.html) (not supperted yet)

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>80x24</title>
-  <link rel="stylesheet" href="http://www.nak.ics.keio.ac.jp/~haru/style/nak.css">
+  <link rel="stylesheet" href="./style/nak.css">
 </head>
 <body>
   <div id="box">
@@ -131,149 +131,189 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">CSI @</td>
+<td style="text-align: left;">CSI Pn @</td>
 <td style="text-align: left;">ICH</td>
-<td style="text-align: left;">insert_blank</td>
+<td style="text-align: left;">inserts Pn blank characters</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI A</td>
+<td style="text-align: left;">CSI Pn A</td>
 <td style="text-align: left;">CUU</td>
-<td style="text-align: left;">curs_up</td>
+<td style="text-align: left;">moves cursor up Pn lines</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI B</td>
+<td style="text-align: left;">CSI Pn B</td>
 <td style="text-align: left;">CUD</td>
-<td style="text-align: left;">curs_down</td>
+<td style="text-align: left;">moves cursor down Pn lines</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI C</td>
+<td style="text-align: left;">CSI Pn C</td>
 <td style="text-align: left;">CUF</td>
-<td style="text-align: left;">curs_forward</td>
+<td style="text-align: left;">moves cursor right Pn columns</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI D</td>
+<td style="text-align: left;">CSI Pn D</td>
 <td style="text-align: left;">CUB</td>
-<td style="text-align: left;">curs_back</td>
+<td style="text-align: left;">moves cursor left Pn columns</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI E</td>
+<td style="text-align: left;">CSI Pn E</td>
 <td style="text-align: left;">CNL</td>
-<td style="text-align: left;">curs_nl</td>
+<td style="text-align: left;">moves cursor down Pn lines in column 1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI F</td>
+<td style="text-align: left;">CSI Pn F</td>
 <td style="text-align: left;">CPL</td>
-<td style="text-align: left;">curs_pl</td>
+<td style="text-align: left;">moves cursor up Pn lines in column 1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI G</td>
+<td style="text-align: left;">CSI Pn G</td>
 <td style="text-align: left;">CHA</td>
-<td style="text-align: left;">curs_col</td>
+<td style="text-align: left;">moves cursor to Pn column in current line</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI H</td>
+<td style="text-align: left;">CSI Pl ; Pc H</td>
 <td style="text-align: left;">CUP</td>
-<td style="text-align: left;">curs_pos</td>
+<td style="text-align: left;">moves cursor to Pl line, Pc column (origin at 1, 1)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI J</td>
+<td style="text-align: left;">CSI Pn J</td>
 <td style="text-align: left;">ED</td>
-<td style="text-align: left;">erase_display</td>
+<td style="text-align: left;">erases display</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI K</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 0 J: from cursor to end of screen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 1 J: from beginning of screen to cursor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 2 J: complete display</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI Pn K</td>
 <td style="text-align: left;">EL</td>
-<td style="text-align: left;">erase_line</td>
+<td style="text-align: left;">erases line</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 0 K: from cursor to end of line</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI L</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 1 K: from beginning of line to cursor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 2 K: complete line</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI Pn L</td>
 <td style="text-align: left;">IL</td>
-<td style="text-align: left;">insert_line</td>
+<td style="text-align: left;">inserts Pn lines</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI M</td>
+<td style="text-align: left;">CSI Pn M</td>
 <td style="text-align: left;">DL</td>
-<td style="text-align: left;">delete_line</td>
+<td style="text-align: left;">deletes Pn lines</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI P</td>
+<td style="text-align: left;">CSI Pn P</td>
 <td style="text-align: left;">DCH</td>
-<td style="text-align: left;">delete_char</td>
+<td style="text-align: left;">deletes Pn characters</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI X</td>
+<td style="text-align: left;">CSI Pn X</td>
 <td style="text-align: left;">ECH</td>
-<td style="text-align: left;">erase_char</td>
+<td style="text-align: left;">erase Pn characters</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI a</td>
+<td style="text-align: left;">CSI Pn a</td>
 <td style="text-align: left;">HPR</td>
-<td style="text-align: left;">curs_forward</td>
+<td style="text-align: left;">same as CUF</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI c</td>
 <td style="text-align: left;">DA</td>
-<td style="text-align: left;">identify</td>
+<td style="text-align: left;">device attributes</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI d</td>
+<td style="text-align: left;">CSI Pn d</td>
 <td style="text-align: left;">VPA</td>
-<td style="text-align: left;">curs_line</td>
+<td style="text-align: left;">moves cursor Pn line in current column</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI e</td>
+<td style="text-align: left;">CSI Pn e</td>
 <td style="text-align: left;">VPR</td>
-<td style="text-align: left;">curs_down</td>
+<td style="text-align: left;">same as CUD</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI f</td>
+<td style="text-align: left;">CSI Pl ; Pc f</td>
 <td style="text-align: left;">HVP</td>
-<td style="text-align: left;">curs_pos</td>
+<td style="text-align: left;">moves cursor to (Pl, Pc)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI g</td>
 <td style="text-align: left;">TBC</td>
-<td style="text-align: left;">clear_tabstop</td>
+<td style="text-align: left;">clears a horizontal tab stop</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI h</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 0 g: clears a horizontal tab stop at cursor position</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">CSI 3 g: clears all horizontal tab stops</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI Ps h</td>
 <td style="text-align: left;">SM</td>
-<td style="text-align: left;">set_mode</td>
+<td style="text-align: left;">sets one or more modes specified by selective parameters</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI l</td>
+<td style="text-align: left;">CSI Ps l</td>
 <td style="text-align: left;">RM</td>
-<td style="text-align: left;">reset_mode</td>
+<td style="text-align: left;">resets one or more modes specified by selective parameters</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI m</td>
+<td style="text-align: left;">CSI Ps m</td>
 <td style="text-align: left;">SGR</td>
-<td style="text-align: left;">set_attr</td>
+<td style="text-align: left;">select graphic rendition</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI n</td>
+<td style="text-align: left;">CSI Ps n</td>
 <td style="text-align: left;">DSR</td>
-<td style="text-align: left;">status_report</td>
+<td style="text-align: left;">device status report</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI r</td>
+<td style="text-align: left;">CSI Pt ; Pb r</td>
 <td style="text-align: left;">DECSTBM</td>
-<td style="text-align: left;">set_margin</td>
+<td style="text-align: left;">selects top and bottom margins</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI s</td>
 <td style="text-align: left;">SCP</td>
-<td style="text-align: left;">save_state</td>
+<td style="text-align: left;">same as DECSC</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI u</td>
 <td style="text-align: left;">RCP</td>
-<td style="text-align: left;">restore_state</td>
+<td style="text-align: left;">same as DECRC</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI `</td>
 <td style="text-align: left;">HPA</td>
-<td style="text-align: left;">curs_col</td>
+<td style="text-align: left;">same as CHA</td>
 </tr>
 </tbody>
 </table>
@@ -288,7 +328,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">OSC 8900…</td>
+<td style="text-align: left;">OSC 8900</td>
 <td style="text-align: left;">GWREPT</td>
 <td style="text-align: left;"><a href="./glyph_width_report.html">glyph width report</a> (not supperted yet)</td>
 </tr>

@@ -1,0 +1,40 @@
+% yaft
+% haru
+% Last update: 12/11/19
+
+## config
+
++       MODE = 279,
++       KB_DELAY = 250,
++       KB_REPEAT = 30,
+
+## preparation
+at first, you must enable following kernel options, see [High Resolution Console] for detail
+[High Resolution Console]: http://www.freebsdwiki.net/index.php/High_Resolution_Console
+
+~~~
+options      VESA            # Build VESA module into kernel
+options      SC_PIXEL_MODE   # Allows syscons to act on pixels rather than text
+~~~
+
+then add `allscreens_flags="MODE_xxx"` to rc.conf
+this xxx value must be the same as MODE in conf.h
+
+~~~
+/* must be the same setting as current video mode */
+MODE = xxx,
+~~~
+
+optional: set mtrr correctly (maybe following values are not correct in your environment)
+
+~~~
+# memcontrol set -b 0xe0000000 -l 0x10000000 -o SVGA write-combine
+~~~
+
+## install
+
+~~~
+$ cd freebsd
+$ gmake
+# gmake install
+~~~
