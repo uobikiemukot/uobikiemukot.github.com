@@ -548,11 +548,11 @@ void glyph_width_report(struct terminal *term, void *arg)
 	/*
 		OSC 8900 ; ? ST
 			glyph width report
-		OSC 8900 ; width ; from ; to ... ST
+		OSC 8900 ; width : from : to ... ST
 			answer
 	*/
-	if (*(term->esc.bp - 1) == '?') {
-		ewrite(term->fd, "\033]8900;%G;0", 11);
+	if (*(term->esc.bp - 2) == '?') {
+		ewrite(term->fd, "\033]8900;0;0", 10);
 		print_width_list(term, 0);
 		print_width_list(term, 1);
 		print_width_list(term, 2);
