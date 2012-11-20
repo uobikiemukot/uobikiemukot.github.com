@@ -358,38 +358,38 @@ void set_attr(struct terminal *term, void *arg)
 	for (i = 0; i < argc; i++) {
 		num = atoi(argv[i]);
 
-		if (num == 0) {						/* reset all attribute and color */
+		if (num == 0) {                    /* reset all attribute and color */
 			term->attribute = RESET;
 			term->color.fg = DEFAULT_FG;
 			term->color.bg = DEFAULT_BG;
 		}
-		else if (1 <= num && num <= 7)		/* set attribute */
+		else if (1 <= num && num <= 7)     /* set attribute */
 			term->attribute |= attr_mask[num];
-		else if (21 <= num && num <= 27)	/* reset attribute */
+		else if (21 <= num && num <= 27)   /* reset attribute */
 			term->attribute &= ~attr_mask[num - 20];
-		else if (30 <= num && num <= 37)	/* set foreground */
+		else if (30 <= num && num <= 37)   /* set foreground */
 			term->color.fg = (num - 30);
-		else if (num == 38) {				/* set 256 color to foreground */
+		else if (num == 38) {              /* set 256 color to foreground */
 			if ((i + 2) < argc && atoi(argv[i + 1]) == 5) {
 				term->color.fg = atoi(argv[i + 2]);
 				i += 2;
 			}
 		}
-		else if (num == 39)	/* reset foreground */
+		else if (num == 39)                /* reset foreground */
 			term->color.fg = DEFAULT_FG;
-		else if (40 <= num && num <= 47)	/* set background */
+		else if (40 <= num && num <= 47)   /* set background */
 			term->color.bg = (num - 40);
-		else if (num == 48) {				/* set 256 color to background */
+		else if (num == 48) {              /* set 256 color to background */
 			if ((i + 2) < argc && atoi(argv[i + 1]) == 5) {
 				term->color.bg = atoi(argv[i + 2]);
 				i += 2;
 			}
 		}
-		else if (num == 49)	/* reset background */
+		else if (num == 49)                /* reset background */
 			term->color.bg = DEFAULT_BG;
-		else if (90 <= num && num <= 97) 	/* set bright foreground */
+		else if (90 <= num && num <= 97)   /* set bright foreground */
 			term->color.fg = (num - 90) + BRIGHT_INC;
-		else if (100 <= num && num <= 107)	/* set bright background */
+		else if (100 <= num && num <= 107) /* set bright background */
 			term->color.bg = (num - 100) + BRIGHT_INC;
 	}
 }
@@ -402,14 +402,13 @@ void status_report(struct terminal *term, void *arg)
 
 	for (i = 0; i < argc; i++) {
 		num = atoi(argv[i]);
-		if (num == 5)			/* terminal response: ready */
+		if (num == 5)        /* terminal response: ready */
 			ewrite(term->fd, "\033[0n", 4);
-		else if (num == 6) {	/* cursor position report */
-			snprintf(buf, BUFSIZE, "\033[%d;%dR",
-				term->cursor.y + 1, term->cursor.x + 1);
+		else if (num == 6) { /* cursor position report */
+			snprintf(buf, BUFSIZE, "\033[%d;%dR", term->cursor.y + 1, term->cursor.x + 1);
 			ewrite(term->fd, buf, strlen(buf));
 		}
-		else if (num == 15)	/* terminal response: printer not connected */
+		else if (num == 15)  /* terminal response: printer not connected */
 			ewrite(term->fd, "\033[?13n", 6);
 	}
 }
@@ -423,9 +422,9 @@ void set_mode(struct terminal *term, void *arg)
 	for (i = 0; i < argc; i++) {
 		mode = atoi(argv[i]);
 		if (term->esc.buf[1] != '?')
-			continue;			/* ansi mode: not implemented */
+			continue;    /* ansi mode: not implemented */
 
-		if (mode == 6) {		/* private mode */
+		if (mode == 6) { /* private mode */
 			term->mode |= MODE_ORIGIN;
 			set_cursor(term, 0, 0);
 		}
@@ -446,9 +445,9 @@ void reset_mode(struct terminal *term, void *arg)
 	for (i = 0; i < argc; i++) {
 		mode = atoi(argv[i]);
 		if (term->esc.buf[1] != '?')
-			continue;			/* ansi mode: not implemented */
+			continue;    /* ansi mode: not implemented */
 
-		if (mode == 6) {		/* private mode */
+		if (mode == 6) { /* private mode */
 			term->mode &= ~MODE_ORIGIN;
 			set_cursor(term, 0, 0);
 		}
@@ -485,7 +484,7 @@ void set_margin(struct terminal *term, void *arg)
 	term->scroll.top = top;
 	term->scroll.bottom = bottom;
 
-	set_cursor(term, 0, 0);	/* move cursor to home */
+	set_cursor(term, 0, 0); /* move cursor to home */
 }
 
 void clear_tabstop(struct terminal *term, void *arg)
@@ -512,50 +511,3 @@ void clear_tabstop(struct terminal *term, void *arg)
 
 /* function for osc sequence */
 /* not implemented */
-
-void print_width_list(struct terminal *term, int width)
-{
-	int i, w, left, right;
-	char buf[BUFSIZE];
-
-	left = right = -1;
-	for (i = 0; i < UCS2_CHARS; i++) {
-		w = wcwidth(i);
-
-		if (w != width) {
-			if (right != -1) {
-				snprintf(buf, BUFSIZE, ";%d:%d:%d", width, left, right);
-				ewrite(term->fd, buf, strlen(buf));
-			}
-			else if (left != -1) {
-				snprintf(buf, BUFSIZE, ";%d:%d:%d", width, left, left);
-				ewrite(term->fd, buf, strlen(buf));
-			}
-			
-			left = right = -1;
-			continue;
-		}
-
-		if (left == -1)
-			left = i;
-		else
-			right = i;
-	}
-}
-
-void glyph_width_report(struct terminal *term, void *arg)
-{
-	/*
-		OSC 8900 ; ? ST
-			glyph width report
-		OSC 8900 ; width : from : to ... ST
-			answer
-	*/
-	if (*(term->esc.bp - 2) == '?') {
-		ewrite(term->fd, "\033]8900;0;0", 10);
-		print_width_list(term, 0);
-		print_width_list(term, 1);
-		print_width_list(term, 2);
-		ewrite(term->fd, "\007", 1);
-	}
-}
