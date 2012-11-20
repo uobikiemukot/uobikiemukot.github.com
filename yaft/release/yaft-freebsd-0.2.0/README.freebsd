@@ -2,14 +2,7 @@
 % haru
 % Last update: 12/11/19
 
-## config (FreeBSD only)
-
-+	MODE = 279, /* video mode see below */
-+	KB_DELAY = 250, /* keyboard delay */
-+	KB_REPEAT = 30, /* key repeat */
-
-## preparation
-
+## preparation (kernel recompile)
 at first, you must enable following kernel options, see [High Resolution Console] for detail
 [High Resolution Console]: http://www.freebsdwiki.net/index.php/High_Resolution_Console
 
@@ -26,10 +19,32 @@ this xxx value must be the same as MODE in conf.h
 MODE = xxx,
 ~~~
 
-optional: set mtrr correctly (maybe following values are not correct in your environment)
+## optional: video mode change
+you can change video mode instantly (after kernel recompile)
+
+~~~
+$ vidcontrol -i mode # check available vide mode
+$ vidcontrol MODE_xxx
+~~~
+
+then rewrite conf.h
+
+~~~
+/* must be the same setting as current video mode */
+MODE = xxx,
+~~~
+
+## optional: set mtrr correctly
+(maybe following values are not correct in your environment)
 
 ~~~
 # memcontrol set -b 0xe0000000 -l 0x10000000 -o SVGA write-combine
+~~~
+
+## optional: set keyrepeat
+
+~~~
+$ kbdcontrol -r fast
 ~~~
 
 ## install
