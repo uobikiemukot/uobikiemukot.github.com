@@ -2,13 +2,14 @@
 % haru
 % Last update: 12/11/19
 
-## config
+## config (FreeBSD only)
 
-+       MODE = 279,
-+       KB_DELAY = 250,
-+       KB_REPEAT = 30,
++	MODE = 279, /* video mode see below */
++	KB_DELAY = 250, /* keyboard delay */
++	KB_REPEAT = 30, /* key repeat */
 
 ## preparation
+
 at first, you must enable following kernel options, see [High Resolution Console] for detail
 [High Resolution Console]: http://www.freebsdwiki.net/index.php/High_Resolution_Console
 
@@ -34,7 +35,6 @@ optional: set mtrr correctly (maybe following values are not correct in your env
 ## install
 
 ~~~
-$ cd freebsd
 $ gmake
 # gmake install
 ~~~

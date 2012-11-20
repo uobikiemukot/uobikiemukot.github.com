@@ -8,6 +8,7 @@ DST = yaft
 SRC = freebsd/yaft.c
 DESTDIR =
 PREFIX = $(DESTDIR)/usr
+TERMCAP = /usr/share/misc/termcap
 
 all: $(DST)
 
@@ -21,8 +22,8 @@ $(DST): $(SRC) $(HDR)
 	$(CC) -o $@ $< $(CFLAGS) $(LDFLAGS)
 
 install:
-	mkdir -p $(PREFIX)/share/terminfo
-	tic -o $(PREFIX)/share/terminfo info/yaft.src
+	cat info/yaft.cap >> $(TERMCAP)
+	cap_mkdb $(TERMCAP)
 	install -Dm755 {./,$(PREFIX)/bin/}yaft
 	install -Dm755 {./,$(PREFIX)/bin/}yaft_wall
 
