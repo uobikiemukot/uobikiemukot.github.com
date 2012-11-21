@@ -1,0 +1,21 @@
+% 80x24
+% haru
+% Last update: 12/11/20
+
+## milkjf font
+japanese bitmap font
+
+## download
+-	[milkjf ank](./files/milkjf_ank.bdf.gz)
+-	[milkjf jis](./files/milkjf_jis.bdf.gz) (not including Kanji)
+
+## history
+-	original milkjf font was designed by [japanfarm] and used on Sharp X68000
+-	[Chisato Yamauchi] converted milkjf font to bdf for X Window System
+
+[japanfarm]: http://www.geocities.co.jp/playtown/9293/
+[Chisato Yamauchi]: http://www.ir.isas.jaxa.jp/~cyamauch/
+
+## screenshot
+![milkjf ank](./img/ank.png)
+![milkjf jis](./img/jis.png)
