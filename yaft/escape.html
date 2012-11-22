@@ -158,12 +158,12 @@
 <tr class="even">
 <td style="text-align: left;">CSI Pn E</td>
 <td style="text-align: left;">CNL</td>
-<td style="text-align: left;">moves cursor down Pn lines in column 1</td>
+<td style="text-align: left;">moves cursor down Pn lines and gives carriage return</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI Pn F</td>
 <td style="text-align: left;">CPL</td>
-<td style="text-align: left;">moves cursor up Pn lines in column 1</td>
+<td style="text-align: left;">moves cursor up Pn lines and gives carriage return</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI Pn G</td>
@@ -176,7 +176,7 @@
 <td style="text-align: left;">moves cursor to Pl line, Pc column (origin at 1, 1)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI Pn J</td>
+<td style="text-align: left;">CSI Ps J</td>
 <td style="text-align: left;">ED</td>
 <td style="text-align: left;">erases display</td>
 </tr>
@@ -196,7 +196,7 @@
 <td style="text-align: left;">CSI 2 J: complete display</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI Pn K</td>
+<td style="text-align: left;">CSI Ps K</td>
 <td style="text-align: left;">EL</td>
 <td style="text-align: left;">erases line</td>
 </tr>
@@ -233,7 +233,7 @@
 <tr class="odd">
 <td style="text-align: left;">CSI Pn X</td>
 <td style="text-align: left;">ECH</td>
-<td style="text-align: left;">erase Pn characters</td>
+<td style="text-align: left;">erases Pn characters</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI Pn a</td>
@@ -243,7 +243,7 @@
 <tr class="odd">
 <td style="text-align: left;">CSI c</td>
 <td style="text-align: left;">DA</td>
-<td style="text-align: left;">device attributes</td>
+<td style="text-align: left;">same as DECID</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI Pn d</td>
@@ -261,7 +261,7 @@
 <td style="text-align: left;">moves cursor to (Pl, Pc)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI g</td>
+<td style="text-align: left;">CSI Ps g</td>
 <td style="text-align: left;">TBC</td>
 <td style="text-align: left;">clears a horizontal tab stop</td>
 </tr>
@@ -276,24 +276,24 @@
 <td style="text-align: left;">CSI 3 g: clears all horizontal tab stops</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CSI Ps h</td>
+<td style="text-align: left;">CSI ? Ps h</td>
 <td style="text-align: left;">SM</td>
-<td style="text-align: left;">sets one or more modes specified by selective parameters</td>
+<td style="text-align: left;">sets one or more modes specified by selective parameters (see below)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">CSI Ps l</td>
+<td style="text-align: left;">CSI ? Ps l</td>
 <td style="text-align: left;">RM</td>
-<td style="text-align: left;">resets one or more modes specified by selective parameters</td>
+<td style="text-align: left;">resets one or more modes specified by selective parameters (see below)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI Ps m</td>
 <td style="text-align: left;">SGR</td>
-<td style="text-align: left;">select graphic rendition</td>
+<td style="text-align: left;">select graphic rendition (see below)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CSI Ps n</td>
 <td style="text-align: left;">DSR</td>
-<td style="text-align: left;">device status report</td>
+<td style="text-align: left;">device status report (see below)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">CSI Pt ; Pb r</td>
@@ -314,6 +314,247 @@
 <td style="text-align: left;">CSI `</td>
 <td style="text-align: left;">HPA</td>
 <td style="text-align: left;">same as CHA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smrm">SM/RM</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">acronym</th>
+<th style="text-align: left;">parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">origin</td>
+<td style="text-align: left;">DECOM</td>
+<td style="text-align: left;">6 (default off)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">auto wrap</td>
+<td style="text-align: left;">DECAWM</td>
+<td style="text-align: left;">7 (default on)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cursor mode</td>
+<td style="text-align: left;">DECTCEM</td>
+<td style="text-align: left;">25 (default on)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sgr">SGR</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">parameter</th>
+<th style="text-align: left;">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">reset</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">bold</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">underline</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">blink</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">reverse</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">reset bold</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">reset underline</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">reset blink</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">reset reverse</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">set black foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">set red foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">set green foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">set brown foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">set blue foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">set magenta foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">set cyan foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">set white foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">38</td>
+<td style="text-align: left;">set extended 256 color foreground (CSI 38 ; 5 ; Ps m)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">set default foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">set black background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">set red background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">set green background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">set brown background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">set blue background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">set magenta background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">set cyan background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">set white background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">set extended 256 color background (CSI 48 ; 5 ; Ps m)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">set default background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">set bright black foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">set bright red foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">set bright green foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">93</td>
+<td style="text-align: left;">set bright brown foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">94</td>
+<td style="text-align: left;">set bright blue foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">95</td>
+<td style="text-align: left;">set bright magenta foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">96</td>
+<td style="text-align: left;">set bright cyan foreground</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">set bright white foreground</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">set bright black background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">101</td>
+<td style="text-align: left;">set bright red background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">102</td>
+<td style="text-align: left;">set bright green background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">103</td>
+<td style="text-align: left;">set bright brown background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">104</td>
+<td style="text-align: left;">set bright blue background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">105</td>
+<td style="text-align: left;">set bright magenta background</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">106</td>
+<td style="text-align: left;">set bright cyan background</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">107</td>
+<td style="text-align: left;">set bright white background</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dsr">DSR</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sequence</th>
+<th style="text-align: left;">responce</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CSI 5 n (<q>request terminal status</q>)</td>
+<td style="text-align: left;">CSI 0 n (<q>terminal ready</q>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CSI 6 n (<q>request cursor position</q>)</td>
+<td style="text-align: left;">CSI Pl ; Pc R (CPR: cursor at Pl line Pc column)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CSI ? 15 n (<q>request printer status</q>)</td>
+<td style="text-align: left;">CSI ? 13 n (<q>printer not connected</q>)</td>
 </tr>
 </tbody>
 </table>
