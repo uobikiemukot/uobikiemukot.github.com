@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>80x24</title>
+  <link rel="stylesheet" href="./style/nak.css">
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <h1 class="title"></h1>
+    </div>
+    <div id="content">
+<h2 id="haru">2012-06-19 haru</h2>
+<ul>
+<li>version 0.1.0</li>
+<li>initial release</li>
+</ul>
+<h2 id="haru-1">2012-06-19 haru</h2>
+<ul>
+<li>version 0.1.1</li>
+<li>bug fix</li>
+</ul>
+<h2 id="haru-2">2012-06-20 haru</h2>
+<ul>
+<li>version 0.1.2</li>
+<li>bug fix</li>
+</ul>
+<h2 id="haru-3">2012-06-20 haru</h2>
+<ul>
+<li>version 0.1.3</li>
+<li>bug fix</li>
+</ul>
+<h2 id="haru-4">2012-06-21 haru</h2>
+<ul>
+<li>version 0.1.4</li>
+<li>added eat_newline_glitch (xel)</li>
+<li>removed auto_right_margin (bw)</li>
+<li>removed OSC 4 (ccc, initc)</li>
+</ul>
+<h2 id="haru-5">2012-06-24 haru</h2>
+<ul>
+<li>version 0.1.5</li>
+<li>changed fonts format</li>
+<li>fixed glyph drawing</li>
+<li>changed effects of BOLD and REVERSE</li>
+</ul>
+<h2 id="haru-6">2012-06-29 haru</h2>
+<ul>
+<li>version 0.1.6</li>
+<li>supported more than one font</li>
+<li>supported glyph alias</li>
+</ul>
+<h2 id="haru-7">2012-10-06 haru</h2>
+<ul>
+<li>version 0.1.7</li>
+<li>supported following framebuffer types:
+<ul>
+<li>15/16/24/32bpp true color (and maybe direct color)</li>
+<li>8bpp pseudo color</li>
+</ul></li>
+</ul>
+<h2 id="haru-8">2012-10-17 haru</h2>
+<ul>
+<li>version 0.1.8</li>
+<li>added some opitons
+<ul>
+<li>yaft reads environment value, YAFT
+<ul>
+<li>wall: display wallpaper</li>
+<li>w=N: set terminal width (pixel)</li>
+<li>h=N: set terminal height (pixel)</li>
+<li>x=N: set x offset</li>
+<li>y=N: set y offset</li>
+</ul></li>
+</ul></li>
+</ul>
+<pre><code>$ export YAFT=&quot;wall w=640 h=384 x=32 y=32&quot;; yaft</code></pre>
+<h2 id="haru-9">2012-10-18 haru</h2>
+<ul>
+<li>version 0.1.9</li>
+<li>added some codes related to virtual console</li>
+<li>removed all optios without <q>YAFT=wall</q></li>
+</ul>
+<h2 id="haru-10">2012-11-09 haru</h2>
+<ul>
+<li>version 0.2.0</li>
+<li>suppported BDF</li>
+</ul>
+<pre><code>$ ./mkfont alias-file your/favorite/bdf &gt; glyph.h
+$ make yaft</code></pre>
+    </div>
+  </div>
+</body>
+</html>
