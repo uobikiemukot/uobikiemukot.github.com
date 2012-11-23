@@ -81,9 +81,9 @@ cursor mode	DECTCEM		25 (default on)
 parameter	effect
 ----------	-------
 0			reset
-1			bold
+1			bold (brighten foreground: only affect color 0 ~ 7)
 4			underline
-5			blink
+5			blink (brighten background: only affect color 0 ~ 7)
 7			reverse
 21			reset bold
 24			reset underline
