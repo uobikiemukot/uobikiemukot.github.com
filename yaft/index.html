@@ -14,9 +14,9 @@
 <p>yet another framebuffer terminal</p>
 <h2 id="download">download</h2>
 <ul>
-<li><a href="./release/yaft-0.2.0.tar.gz">yaft-0.2.0</a> (Linux console)</li>
-<li><a href="./release/yaft-x-0.2.0.tar.gz">yaft-x-0.2.0</a> (X Window System)</li>
-<li><a href="./release/yaft-freebsd-0.2.0.tar.gz">yaft-freebsd-0.2.0</a> (FreeBSD console)</li>
+<li><a href="./release/yaft-0.2.1.tar.gz">yaft-0.2.1</a> (Linux console)</li>
+<li><a href="./release/yaft-x-0.2.1.tar.gz">yaft-x-0.2.1</a> (X Window System)</li>
+<li><a href="./release/yaft-freebsd-0.2.1.tar.gz">yaft-freebsd-0.2.1</a> (FreeBSD console)</li>
 </ul>
 <h2 id="features">features</h2>
 <ul>
@@ -39,6 +39,14 @@
 </ul>
 <pre><code>    $ ./mkfont alias /your/favorite/bdf &gt; glyph.h
     $ make yaft</code></pre>
+<h2 id="section">2012-11-30</h2>
+<ul>
+<li>version 0.2.1</li>
+<li>bug fix
+<ul>
+<li>single CSI u (not following CSI s) causes Segmentation fault (reported by saitoh (@kefir_))</li>
+</ul></li>
+</ul>
 <h2 id="screenshot">screenshot</h2>
 <figure>
 <img src="./img/yaft-screenshot.png" alt="screenshot1"><figcaption>screenshot1</figcaption>
