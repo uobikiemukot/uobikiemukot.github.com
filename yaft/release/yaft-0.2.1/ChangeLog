@@ -68,4 +68,4 @@ $ make yaft
 ## 2012-11-30
 -	version 0.2.1
 -	bug fix
-	-	single CSI u (not following CSI s) causes Segmentation fault (reported by saitoh (@kefir_))
+	-	single CSI u (not following CSI s) causes Segmentation fault (reported by saitoha (@kefir_))
