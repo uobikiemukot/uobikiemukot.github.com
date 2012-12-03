@@ -23,11 +23,11 @@ $(DST): $(SRC) $(HDR)
 install:
 	mkdir -p $(PREFIX)/share/terminfo
 	tic -o $(PREFIX)/share/terminfo info/yaft.src
-	install -Dm755 {./,$(PREFIX)/bin/}yaft
+	install -Dm755 {./,$(PREFIX)/bin/}yaftx
 	install -Dm755 {./,$(PREFIX)/bin/}yaft_wall
 
 uninstall:
-	rm -rf $(PREFIX)/bin/yaft
+	rm -rf $(PREFIX)/bin/yaftx
 	rm -rf $(PREFIX)/bin/yaft_wall
 
 clean:
