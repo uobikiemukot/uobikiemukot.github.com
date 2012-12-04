@@ -1,0 +1,140 @@
+% supported escape sequences
+% haru
+% Last update: 12/11/14
+
+## Control Characters
+
+hex		char		function
+-----	-----		---------
+0x08	BS			backspaces one column
+0x09	HT			goes to the next tab stop or to the end of the line if there is no earlier tab stop
+0x0A	LF			gives a linefeed
+0x0B	VT			same as LF
+0x0C	FF			same as LF
+0x0D	CR			gives a carriage return
+0x1B	ESC			starts an escape sequence
+
+## ESC
+sequence	acronym		function
+---------	---------	---------
+ESC 7		DECSC		saves current state (cursor coordinates, attributes and DECOM)
+ESC 8		DECRC		restores state most recently saved by ESC 7
+ESC D		IND			gives a linefeed
+ESC E		NEL			gives a newline (CR + LF)
+ESC H		HTS			sets a tab stop at current column
+ESC M		RI			gives a reverse linefeed
+ESC Z		DECID		DEC private identification (answer: ESC [ ? 6 c "I am a VT102")
+ESC [		CSI			control sequence introducer (CSI)
+ESC ]		OSC			operating system command (OSC)
+ESC c		RIS			resets a terminal state (mode, scrolling region, cursor coordinates, current color pair, attributes and tabstop)
+			
+
+## CSI
+sequence		acronym		function
+---------		---------	---------
+CSI Pn @		ICH			inserts Pn blank characters
+CSI Pn A		CUU			moves cursor up Pn lines
+CSI Pn B		CUD			moves cursor down Pn lines
+CSI Pn C		CUF			moves cursor right Pn columns
+CSI Pn D		CUB			moves cursor left Pn columns
+CSI Pn E		CNL			moves cursor down Pn lines and gives carriage return
+CSI Pn F		CPL			moves cursor up Pn lines  and gives carriage return
+CSI Pn G		CHA			moves cursor to Pn column in current line
+CSI Pl ; Pc H	CUP			moves cursor to Pl line, Pc column (origin at 1, 1)
+CSI Ps J		ED			erases display
+							CSI 0 J: from cursor to end of screen
+							CSI 1 J: from beginning of screen to cursor
+							CSI 2 J: complete display
+CSI Ps K		EL			erases line
+							CSI 0 K: from cursor to end of line
+							CSI 1 K: from beginning of line to cursor
+							CSI 2 K: complete line
+CSI Pn L		IL			inserts Pn lines
+CSI Pn M		DL			deletes Pn lines
+CSI Pn P		DCH			deletes Pn characters
+CSI Pn X		ECH			erases Pn characters
+CSI Pn a		HPR			same as CUF
+CSI c			DA			same as DECID
+CSI Pn d		VPA			moves cursor Pn line in current column
+CSI Pn e		VPR			same as CUD
+CSI Pl ; Pc f	HVP			moves cursor to (Pl, Pc)
+CSI Ps g		TBC			clears a horizontal tab stop
+							CSI 0 g: clears a horizontal tab stop at cursor position
+							CSI 3 g: clears all horizontal tab stops
+CSI ? Ps h		SM			sets one or more modes specified by selective parameters (see below)
+CSI ? Ps l		RM			resets one or more modes specified by selective parameters (see below)
+CSI Ps m		SGR			select graphic rendition (see below)
+CSI Ps n		DSR			device status report (see below)
+CSI Pt ; Pb r	DECSTBM		selects top and bottom margins
+CSI s			SCP			same as DECSC
+CSI u			RCP			same as DECRC
+CSI `			HPA			same as CHA
+
+### SM/RM
+name		acronym		parameter
+-----		---------	---------
+origin 		DECOM		6 (default off)
+auto wrap	DECAWM		7 (default on)
+cursor mode	DECTCEM		25 (default on)
+
+### SGR
+parameter	effect
+----------	-------
+0			reset
+1			bold (brighten foreground: only affect color 0 ~ 7)
+4			underline
+5			blink (brighten background: only affect color 0 ~ 7)
+7			reverse
+21			reset bold
+24			reset underline
+25			reset blink
+27			reset reverse
+30			set black foreground 
+31			set red foreground 
+32			set green foreground 
+33			set brown foreground 
+34			set blue foreground 
+35			set magenta foreground 
+36			set cyan foreground 
+37			set white foreground 
+38			set extended 256 color foreground (CSI 38 ; 5 ; Ps m)
+39			set default foreground 
+40			set black background 
+41			set red background 
+42			set green background 
+43			set brown background 
+44			set blue background 
+45			set magenta background 
+46			set cyan background 
+47			set white background 
+48			set extended 256 color background (CSI 48 ; 5 ; Ps m)
+49			set default background 
+90			set bright black foreground 
+91			set bright red foreground 
+92			set bright green foreground 
+93			set bright brown foreground 
+94			set bright blue foreground 
+95			set bright magenta foreground 
+96			set bright cyan foreground 
+97			set bright white foreground 
+100			set bright black background 
+101			set bright red background 
+102			set bright green background 
+103			set bright brown background 
+104			set bright blue background 
+105			set bright magenta background 
+106			set bright cyan background 
+107			set bright white background 
+
+
+### DSR
+sequence								responce
+---------								---------
+CSI 5 n ("request terminal status")		CSI 0 n ("terminal ready")
+CSI 6 n ("request cursor position")		CSI Pl ; Pc R (CPR: cursor at Pl line Pc column)
+CSI ? 15 n ("request printer status")	CSI ? 13 n ("printer not connected")
+
+## OSC
+sequence	acronym		function
+---------	---------	---------
+OSC 8900	GWREPT		[glyph width report](./glyph_width_report.html) (not supperted yet)
