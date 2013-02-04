@@ -2,14 +2,23 @@
 % haru
 % Last update: 12/11/20
 
-## terminal
+## yaft
 -	[yaft](./yaft/)
 -	[yaft escape sequences](./yaft/escape.html)
 -	[gylph width report](./yaft/glyph_width_report.html)
--	[archlinux-2013.02.01-with-yaft-yaskk.iso](http://www.nak.ics.keio.ac.jp/~haru/files/archlinux-2013.02.01-with-yaft-yaskk.iso)
+
+<!--
+
+## yaskk
+-	[]()
+
+-->
 
 ## fonts
 -	[milkjf font](./milkjf/)
+
+## misc
+-	[archlinux-2013.02.01-with-yaft-yaskk.iso](http://www.nak.ics.keio.ac.jp/~haru/files/archlinux-2013.02.01-with-yaft-yaskk.iso)
 
 <!--
 
@@ -17,9 +26,6 @@
 -	[live in console](./console/)
 
 ## stuff
-
-## misc
--	[fonts](./fonts/)
 
 -->
 
