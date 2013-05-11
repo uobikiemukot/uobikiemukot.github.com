@@ -43,7 +43,7 @@ $ make yaft
 
 [UTF-8 decoder capability and stress test]: http://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-test.txt
 
-## 2012-12-19
+### 2012-12-19
 -	version 0.2.3
 -	bug fix
 	-	wrong behavior of bce (ED, EL, DL, IL, ICH, DCH, ECH) (reported by IWAMOTO Kouichi ([@ttdoda]))
