@@ -22,7 +22,7 @@ OSC 8900 ; Ps ; ? : Pw : Pf : Pt ST
 OSC 8900 ; Ps ; Pt ; Pf : Pt ; Pf : Pt ; ... ST
 ~~~
 
--	Ps: responce code
+-	Ps: response code
 	-	0: ok (default)
 	-	1: recognized but not supported
 	-	2: not recognized
