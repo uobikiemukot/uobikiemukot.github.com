@@ -1,18 +1,25 @@
 % 80x24
 % haru
-% Last update: 12/11/20
+% Last update: 14/05/12
 
 ## milkjf font
-japanese bitmap font (not including Kanji)
+japanese bitmap font
 
 ## download
--	milkjf ank
+-	milkjf ank (not including Kanji)
 	[bdf](./files/milkjf_ank.bdf.gz) 
 	[pcf](./files/milkjf_ank.pcf.gz) 
 
--	milkjf jis
+-	milkjf jis (not including Kanji)
 	[bdf](./files/milkjf_jis.bdf.gz) 
 	[pcf](./files/milkjf_jis.pcf.gz) 
+
+-	milkjf + shinonome font
+	[bdf](./files/milkjf.bdf.gz) 
+	[pcf](./files/milkjf.pcf.gz) 
+
+-	milkjf (for X68000)
+	[rom](./files/milkjf_x68k.zip)
 
 ## history
 -	original milkjf font was designed by [japanfarm] and used on Sharp X68000

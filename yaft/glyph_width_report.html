@@ -11,9 +11,9 @@
       <h1 class="title">glyph width report (GWREPT)</h1>
     </div>
     <div id="content">
-<h2 id="glyph-width-report-rev.2">glyph width report (rev.2)</h2>
+<h2 id="glyph-width-report-rev.3">glyph width report (rev.3)</h2>
 <h3 id="request">request</h3>
-<pre><code>OSC 8900 ; Ps ; ? : Pw : Pf : Pt ST</code></pre>
+<pre><code>OSC 8900 ; Ps ; Pw ; ? : Pf : Pt ST</code></pre>
 <ul>
 <li>Ps: reserved</li>
 <li>Pw: width (0 or 1 or 2)</li>
@@ -22,7 +22,7 @@
 <li>ST: BEL(0x07) or ESC(0x1B) BACKSLASH(0x5C)</li>
 </ul>
 <h3 id="answer">answer</h3>
-<pre><code>OSC 8900 ; Ps ; Pt ; Pf : Pt ; Pf : Pt ; ... ST</code></pre>
+<pre><code>OSC 8900 ; Ps ; Pt ; Pw ; Pf : Pt ; Pf : Pt ; ... ST</code></pre>
 <ul>
 <li>Ps: response code
 <ul>
@@ -36,32 +36,88 @@
 <li>Pt: end of unicode code point</li>
 <li>ST: BEL(0x07) or ESC(0x1B) BACKSLASH(0x5C)</li>
 </ul>
-<h3 id="example">example</h3>
-<p>request</p>
-<pre><code>OSC 8900;0;?:2:0:65535 ST</code></pre>
-<p>answer</p>
-<pre><code>OSC 8900;0;0;4352:4441;4447:4447;9001:9002;11904:11929;11931:12019;12032:12245;12272:12283;12288:12329;12336:12350;12353:12438;12443:12543;12549:12589;12593:12686;12688:12727;12736:12751;12784:12830;12832:12867;12880:13054;13056:19893;19904:40891;40960:42124;42128:42182;44032:55203;63744:64045;64048:64106;64112:64217;65040:65049;65072:65106;65108:65126;65128:65131;65281:65376;65504:65510; ST</code></pre>
+<h2 id="example">example</h2>
+<h3 id="request-1">request</h3>
+<pre><code>OSC 8900;0;2;?:0:65535 ST</code></pre>
+<h3 id="answer-1">answer</h3>
+<pre><code>OSC 8900;0;0;2;4352:4441;4447:4447;9001:9002;11904:11929;11931:12019;12032:12245;12272:12283;12288:12329;12336:12350;12353:12438;12443:12543;12549:12589;12593:12686;12688:12727;12736:12751;12784:12830;12832:12867;12880:13054;13056:19893;19904:40891;40960:42124;42128:42182;44032:55203;63744:64045;64048:64106;64112:64217;65040:65049;65072:65106;65108:65126;65128:65131;65281:65376;65504:65510; ST</code></pre>
 <h3 id="ref">ref</h3>
 <ul>
 <li>http://uobikiemukot.github.io/yaft/glyph_width_report.html</li>
 <li>https://gist.github.com/saitoha/8767268</li>
 </ul>
-<h2 id="glyph-width-report-rev.1">glyph width report (rev.1)</h2>
-<h3 id="request-1">request</h3>
-<pre><code>OSC 8900 ; Ps ; ? ST</code></pre>
-<ul>
-<li>Ps: reserved (maybe charset)</li>
-</ul>
-<h3 id="answer-1">answer</h3>
-<pre><code>OSC 8900 ; Ps ; Pt ; width : from : to ; width : from : to ; ... ST</code></pre>
-<ul>
-<li>Ps: reserved (maybe charset)</li>
-<li>Pt: reverved (maybe East Asian Width version)</li>
-<li>width: 0 or 1 or 2</li>
-<li>from, to: unicode code point (decimal)</li>
-</ul>
-<h3 id="example-1">example</h3>
-<pre><code>OSC 8900;0;0;2:4352:4441;2:4447:4447;2:9001:9002;2:11904:11929;2:11931:12019;2:12032:12245;2:12272:12283;2:12288:12329;2:12336:12350;2:12353:12438;2:12443:12543;2:12549:12589;2:12593:12686;2:12688:12727;2:12736:12751;2:12784:12830;2:12832:12867;2:12880:13054;2:13056:19893;2:19904:40891;2:40960:42124;2:42128:42182;2:44032:55203;2:63744:64045;2:64048:64106;2:64112:64217;2:65040:65049;2:65072:65106;2:65108:65126;2:65128:65131;2:65281:65376;2:65504:65510 ST</code></pre>
+<!--
+## glyph width report (rev.2)
+
+### request
+
+~~~
+OSC 8900 ; Ps ; ? : Pw : Pf : Pt ST
+~~~
+
+-   Ps: reserved
+-   Pw: width (0 or 1 or 2)
+-   Pf: beginning of unicode code point
+-   Pt: end of unicode code point
+-   ST: BEL(0x07) or ESC(0x1B) BACKSLASH(0x5C)
+
+### answer
+
+~~~
+OSC 8900 ; Ps ; Pt ; Pf : Pt ; Pf : Pt ; ... ST
+~~~
+
+-   Ps: response code
+    -   0: ok (default)
+    -   1: recognized but not supported
+    -   2: not recognized
+-   Pt: reserved (maybe East Asian Width Version)
+-   Pw: width (0 or 1 or 2) (deprecated)
+-   Pf: beginning of unicode code point
+-   Pt: end of unicode code point
+-   ST: BEL(0x07) or ESC(0x1B) BACKSLASH(0x5C)
+
+## example
+
+### request
+
+~~~
+OSC 8900;0;?:2:0:65535 ST
+~~~
+
+### answer
+
+~~~
+OSC 8900;0;0;4352:4441;4447:4447;9001:9002;11904:11929;11931:12019;12032:12245;12272:12283;12288:12329;12336:12350;12353:12438;12443:12543;12549:12589;12593:12686;12688:12727;12736:12751;12784:12830;12832:12867;12880:13054;13056:19893;19904:40891;40960:42124;42128:42182;44032:55203;63744:64045;64048:64106;64112:64217;65040:65049;65072:65106;65108:65126;65128:65131;65281:65376;65504:65510; ST
+~~~
+
+## glyph width report (rev.1)
+
+### request
+
+~~~
+OSC 8900 ; Ps ; ? ST
+~~~
+
+-   Ps: reserved (maybe charset)
+
+### answer
+
+~~~
+OSC 8900 ; Ps ; Pt ; width : from : to ; width : from : to ; ... ST
+~~~
+
+-   Ps: reserved (maybe charset)
+-   Pt: reverved (maybe East Asian Width version)
+-   width: 0 or 1 or 2
+-   from, to: unicode code point (decimal)
+
+## example
+
+~~~
+OSC 8900;0;0;2:4352:4441;2:4447:4447;2:9001:9002;2:11904:11929;2:11931:12019;2:12032:12245;2:12272:12283;2:12288:12329;2:12336:12350;2:12353:12438;2:12443:12543;2:12549:12589;2:12593:12686;2:12688:12727;2:12736:12751;2:12784:12830;2:12832:12867;2:12880:13054;2:13056:19893;2:19904:40891;2:40960:42124;2:42128:42182;2:44032:55203;2:63744:64045;2:64048:64106;2:64112:64217;2:65040:65049;2:65072:65106;2:65108:65126;2:65128:65131;2:65281:65376;2:65504:65510 ST
+~~~
+-->
     </div>
   </div>
 </body>
