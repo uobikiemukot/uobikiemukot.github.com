@@ -14,9 +14,9 @@ japanese bitmap font
 	[bdf](./files/milkjf_jis.bdf.gz) 
 	[pcf](./files/milkjf_jis.pcf.gz) 
 
--	milkjf + shinonome font
-	[bdf](./files/milkjf.bdf.gz) 
-	[pcf](./files/milkjf.pcf.gz) 
+-	milkjf + shinonome font (including bold)
+	[bdf](./files/milkjf.bdf.tar.gz) 
+	[pcf](./files/milkjf.pcf.tar.gz) 
 
 -	milkjf (for X68000)
 	[rom](./files/milkjf_x68k.zip)
