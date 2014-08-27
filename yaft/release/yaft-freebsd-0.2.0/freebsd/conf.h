@@ -1,0 +1,1 @@
+/home/nak/haru/yaft/freebsd/conf.h

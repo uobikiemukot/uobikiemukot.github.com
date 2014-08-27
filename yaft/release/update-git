@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/tmp/git/uobikiemukot.github.com
+cp -ruP ~/public_html/yaft .
+git_push

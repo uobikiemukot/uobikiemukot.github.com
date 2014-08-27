@@ -1,0 +1,38 @@
+# INSTALL
+
+## Linux console
+
+~~~
+$ make
+(# make install)
+~~~
+
+## X Window System
+
+~~~
+$ make yaftx
+(# make install)
+~~~
+
+## FreeBSD console
+
+change header file in yaft.c
+
+~~~
+//#include "linux.h"
+#include "freebsd.h"
+~~~
+
+change conf.h
+
+~~~
+//const char *fb_path = "/dev/fb0";
+const char *fb_path = "/dev/tty"; /* for FreeBSD */
+//const char *shell_cmd = "/bin/bash";
+const char *shell_cmd = "/bin/csh"; /* for FreeBSD */
+~~~
+
+~~~
+$ make
+(# make install)
+~~~
