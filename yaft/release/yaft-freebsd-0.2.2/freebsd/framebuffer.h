@@ -1,1 +1,0 @@
-/home/nak/haru/yaft/freebsd/framebuffer.h

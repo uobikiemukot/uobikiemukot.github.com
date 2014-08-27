@@ -1,1 +1,0 @@
-/home/nak/haru/yaft/bdf/mkfont_bdf.c
