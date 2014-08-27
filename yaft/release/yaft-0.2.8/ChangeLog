@@ -87,14 +87,14 @@ $ make yaft
 
 [@ttdoda]: http://doda.teraterm.org/whoami.xhtm
 
-# 2014-03-07
+## 2014-03-07
 -	version 0.2.4
 -	add some parameters in conf.h
 	- ROTATE: NORMAL or CLOCKWISE or COUNTER_CLOCKWISE or UPSIDE_DOWN
 	- LAZY_DRAW (reduce drawing)
 	- BACKGROUND_DRAW (after vt switch, continue drawing)
 
-# 2014-03-24
+## 2014-03-24
 -	version 0.2.5
 -	remove ROTATE, LAZY_DRAW, BACKGROUND_DRAW options
 -	add some environment options
@@ -106,7 +106,7 @@ $ make yaft
 -	add OSC4/OSC104/OSC8900 (glyph width report)
 		(ref: http://uobikiemukot.github.io/yaft/glyph_width_report.html)
 
-# 2014-05-16
+## 2014-05-16
 -	version 0.2.6
 -	remove rotate option
 -	support glyph width report rev.3
@@ -115,11 +115,11 @@ $ make yaft
 -	bug fix
 	-	never refresh cmap at vt switch (8bpp mode)
 
-# 2014-05-18
+## 2014-05-18
 -	version 0.2.7
 -	support xim (yaftx)
 
-# 2014-08-27
+## 2014-08-27
 -	version 0.2.8
 -	support sixel
 -	support copy/paste (yaftx)

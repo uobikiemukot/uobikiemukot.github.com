@@ -28,7 +28,7 @@ or
 
 (maybe something old)
 
--	http://uobikiemukot.github.io/yaft/release/yaft-0.2.7.tar.gz
+-	http://uobikiemukot.github.io/yaft/release/yaft-0.2.8.tar.gz
 
 ## features
 
