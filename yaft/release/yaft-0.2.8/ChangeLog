@@ -125,5 +125,5 @@ $ make yaft
 -	support copy/paste (yaftx)
 -	support NetBSD/OpenBSD wscons
 -	refer SHELL environment variable
--	remove WALLPAPER option (use YAFT="wall")
+-	remove WALLPAPER option (use YAFT="wall" environment variable)
 -	add man page
