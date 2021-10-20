@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <!-- <script src="js/bouyomichan_client.js"></script> -->
+    <script type='text/javascript' src='js/obs-websocket.js'></script>
 
     <title>ninshikiChan</title>
 
@@ -81,7 +82,11 @@
 
     <script>
         var flag_speech = 0;
-         
+
+        //const { OBSWebSocket } = require('obs-websocket-js');
+        const obs = new OBSWebSocket();
+        obs.connect({ address: 'localhost:4444' });
+
         // URLパラメータ取得用関数 ---------------------------
         function getParam(name, url) {
             if (!url) url = window.location.href;
@@ -104,6 +109,8 @@
             document.getElementById('trans_text2-imb').innerHTML = '';
             document.getElementById('trans_text2-bg').innerHTML = '';
             document.getElementById('trans_text2-fg').innerHTML = '';
+            obs.send('SetTextGDIPlusProperties', {source: 'speech', text: ''});
+            obs.send('SetTextGDIPlusProperties', {source: 'trans', text: ''});
         };
 
 
@@ -248,6 +255,8 @@
                     document.getElementById('speech_text-bg').innerHTML = recog_text;
                     document.getElementById('speech_text-fg').innerHTML = recog_text;
 
+                    obs.send('SetTextGDIPlusProperties', {source: 'speech', text: recog_text});
+
                     // 棒読みちゃんにコメントを送信する
 bouyomi = "false";
                     if(bouyomi == "true") {
@@ -269,12 +278,11 @@ console.log('request.status:'+request.status);
                                     document.getElementById('speech_text-imb').innerHTML = recog_text;
                                     document.getElementById('speech_text-bg').innerHTML = recog_text;
                                     document.getElementById('speech_text-fg').innerHTML = recog_text;
-                                    // document.getElementById('trans_text-imb').innerHTML = '[' + trans_destlang + '] ' + request.responseText;
-                                    // document.getElementById('trans_text-bg').innerHTML = '[' + trans_destlang + '] ' + request.responseText;
-                                    // document.getElementById('trans_text-fg').innerHTML = '[' + trans_destlang + '] ' + request.responseText;
                                     document.getElementById('trans_text-imb').innerHTML =  request.responseText;
                                     document.getElementById('trans_text-bg').innerHTML =  request.responseText;
                                     document.getElementById('trans_text-fg').innerHTML =  request.responseText;
+                                    obs.send('SetTextGDIPlusProperties', {source: 'speech', text: recog_text});
+                                    obs.send('SetTextGDIPlusProperties', {source: 'trans', text: request.responseText});
                                 }
                             }
                             request.send(null);
@@ -309,6 +317,7 @@ console.log('request.status:'+request.status);
                         document.getElementById('speech_text-imb').innerHTML = recog_text;
                         document.getElementById('speech_text-bg').innerHTML = recog_text;
                         document.getElementById('speech_text-fg').innerHTML = recog_text;
+                        obs.send('SetTextGDIPlusProperties', {source: 'speech', text: recog_text});
                     }
 
                 }
