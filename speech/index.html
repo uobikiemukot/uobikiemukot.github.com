@@ -333,6 +333,7 @@ console.log('request.status:'+request.status);
                     document.getElementById('speech_text-imb').innerHTML = "<< " + results[i][0].transcript + " >>";
                     document.getElementById('speech_text-bg').innerHTML = "<< " + results[i][0].transcript + " >>";
                     document.getElementById('speech_text-fg').innerHTML = "<< " + results[i][0].transcript + " >>";
+                    obs.send('SetTextGDIPlusProperties', {source: 'speech', text: "<< " + results[i][0].transcript + " >>"});
                     flag_speech = 1;
                 }
             }
