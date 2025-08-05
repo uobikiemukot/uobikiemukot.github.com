@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スト6 エレナ コンボ選択ツール</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>スト6 エレナ コンボ選択ツール</h3>
+        <p>状況と好みの重みを設定して、最適なコンボを見つけましょう。</p>
+
+        <div class="card-panel">
+            <h5><i class="material-icons left">tune</i>パラメータ重み設定</h5>
+            <div class="weight-slider"><label for="damage-slider">ダメージ</label><p class="range-field"><input type="range" id="damage-slider" min="0" max="5" value="1" /></p><span id="damage-slider-value" class="slider-value">1</span></div>
+            <div class="weight-slider"><label for="sa-gain-slider">SAゲージ回収量</label><p class="range-field"><input type="range" id="sa-gain-slider" min="0" max="5" value="1" /></p><span id="sa-gain-slider-value" class="slider-value">1</span></div>
+            <div class="weight-slider"><label for="drive-gain-slider">Dゲージ回収量</label><p class="range-field"><input type="range" id="drive-gain-slider" min="0" max="5" value="1" /></p><span id="drive-gain-slider-value" class="slider-value">1</span></div>
+            <div class="weight-slider"><label for="carry-slider">運び性能</label><p class="range-field"><input type="range" id="carry-slider" min="0" max="5" value="1" /></p><span id="carry-slider-value" class="slider-value">1</span></div>
+            <div class="weight-slider"><label for="okizeme-slider">起き攻め状況</label><p class="range-field"><input type="range" id="okizeme-slider" min="0" max="5" value="1" /></p><span id="okizeme-slider-value" class="slider-value">1</span></div>
+            <div class="weight-slider"><label for="difficulty-slider">難易度 (高→易)</label><p class="range-field"><input type="range" id="difficulty-slider" min="0" max="5" value="1" /></p><span id="difficulty-slider-value" class="slider-value">1</span></div>
+        </div>
+
+        <div class="card-panel" id="sort-area">
+            <h5><i class="material-icons left">filter_list</i>絞り込み条件</h5>
+            <div class="row" style="margin-bottom: 0;">
+                <div class="col s12 m6 l4">
+                    <label>SAゲージ量</label>
+                    <div class="input-field inline" style="width: 30%;"><select id="sa-gauge-int"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option></select></div>
+                    <div class="sa-gauge-float-container"><p class="range-field"><input type="range" id="sa-gauge-float" min="0" max="1" value="0" step="0.1" /></p></div>
+                </div>
+                <div class="col s12 m6 l4">
+                    <label for="drive-gauge-slider">Dゲージ量: <span id="drive-gauge-value">6.0</span></label>
+                    <p class="range-field"><input type="range" id="drive-gauge-slider" min="0" max="6" value="6" step="0.1" /></p>
+                </div>
+                 <div class="input-field col s12 m6 l4">
+                    <select id="starter-select"><option value="any" selected>指定なし</option></select>
+                    <label>始動技</label>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 0;">
+                <div class="input-field col s12 m6 l4">
+                    <select id="hit-condition-select"><option value="any" selected>指定なし</option><option value="ノーマル">ノーマル</option><option value="カウンター">カウンター</option><option value="パニッシュカウンター">パニッシュカウンター</option><option value="ガード">ガード</option><option value="インパクト">インパクト</option><option value="スタン">スタン</option></select>
+                    <label>ヒット状況</label>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <select id="target-state-select"><option value="any" selected>指定なし</option><option value="立ち限定">立ち限定</option><option value="しゃがみ限定">しゃがみ限定</option></select>
+                    <label>対象状態</label>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <select id="position-select"><option value="any" selected>指定なし</option><option value="中央">中央</option><option value="画面端">画面端</option><option value="画面端到達">画面端到達</option></select>
+                    <label>位置</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="center-align" style="margin-top: 20px; margin-bottom: 20px;">
+            <a class="waves-effect waves-light btn-large" id="search-button"><i class="material-icons left">search</i>コンボを検索</a>
+            <a class="waves-effect waves-light btn-flat" id="reset-button">リセット</a>
+        </div>
+
+        <div class="card-panel" id="results-area">
+             <h5><i class="material-icons left">assessment</i>結果</h5>
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th class="th-rank">順位</th>
+                        <th class="th-details">コンボ詳細</th>
+                        <th class="th-num">ダメージ</th>
+                        <th class="th-num">+F</th>
+                        <th class="th-num">D消費</th>
+                        <th class="th-num">SA消費</th>
+                        <th class="th-score">総合スコア</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <tr><td colspan="7" class="center-align" style="padding: 20px;">上の条件を設定して「コンボを検索」ボタンを押してください。</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="oki-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="oki-modal-title">起き攻め一覧</h4>
+            <ul class="collection" id="oki-modal-list"></ul>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">閉じる</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
