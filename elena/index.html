@@ -63,7 +63,7 @@
 
         <div class="card-panel" id="results-area">
              <h5><i class="material-icons left">assessment</i>結果</h5>
-            <table class="highlight">
+            <table class="highlight pc-only">
                 <thead>
                     <tr>
                         <th class="th-rank">順位</th>
@@ -76,9 +76,11 @@
                     </tr>
                 </thead>
                 <tbody id="results-body">
-                    <tr><td colspan="7" class="center-align" style="padding: 20px;">上の条件を設定して「コンボを検索」ボタンを押してください。</td></tr>
                 </tbody>
             </table>
+            <div id="results-cards" class="mobile-only">
+            </div>
+            <div id="no-results" class="center-align" style="padding: 20px; display: none;"></div>
         </div>
     </div>
 
